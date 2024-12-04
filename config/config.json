@@ -1,0 +1,149 @@
+{
+    "tasks": [
+        {
+            "name": "本周重要宏观事件",
+            "url": "https://cn.investing.com/economic-calendar/",
+            "element": null,
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "macro_event_handler"
+        },
+        {
+            "name": "恐慌和贪婪指数",
+            "url": "https://alternative.me/crypto/fear-and-greed-index/",
+            "element": "//*[@id=\"main\"]/section/div/div[3]/div[1]/div/a/img",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": null
+        },
+        {
+            "name": "美联储降息",
+            "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
+            "element": "//*[@id=\"MainContent_pnlContainer\"]/div[3]/div/div",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "interest_rate_handler"
+        },
+        {
+            "name": "稳定币",
+            "url": "https://defillama.com/stablecoins",
+            "element": "//*[@id=\"__next\"]/main/div[2]/div[2]",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": null
+        },
+        {
+            "name": "资金流",
+            "url": "https://www.coinglass.com/zh/LongShortRatio",
+            "element": null,
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "long_short_ratio_handler"
+        },
+        {
+            "name": "BTC-USDT 热力图",
+            "url": "https://www.coinglass.com/zh/pro/futures/LiquidationHeatMap",
+            "element": "//*[@id=\"__next\"]/div[2]/div/div[2]/div[2]/div[3]/div[5]",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": null
+        },
+        {
+            "name": "ETH-USDT 热力图",
+            "url": "https://www.coinglass.com/zh/pro/futures/LiquidationHeatMap",
+            "element": "//*[@id=\"__next\"]/div[2]/div/div[2]/div[2]/div[3]/div[5]",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "eth_heat_map_handler"
+        },
+        {
+            "name": "BTC-ETF净流出净流入(USD)",
+            "url": "https://www.coinglass.com/zh/bitcoin-etf",
+            "element": "//*[@id=\"__next\"]/div[2]/div[1]/div[2]/div[7]/div[1]",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "btc_eft_net_flow_handler"
+        },
+        {
+            "name": "ETH-ETF净流入(USD)",
+            "url": "https://www.coinglass.com/zh/eth-etf",
+            "element": "//*[@id=\"__next\"]/div[2]/div[2]/div[2]/div/div/div[4]/div[2]",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "eth_eft_net_inflow_handler"
+        },
+        {
+            "name": "比特币虾净持仓变化",
+            "url": "https://studio.glassnode.com/workbench/506f9756-e470-4781-5ed1-1a8391d5f308?s=1704038400&u=1730191780&zoom=ytd",
+            "element": "//*[@id=\"root\"]/div/div[4]/div[2]/div/div[2]/div/div[2]/div",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "glassnode_handler"
+        },
+        {
+            "name": "比特币螃蟹净持仓变化",
+            "url": "https://studio.glassnode.com/workbench/eb7c91b8-4df2-4457-428d-6492a06dd97d?s=1704038400&u=1730191780&zoom=ytd",
+            "element": "//*[@id=\"root\"]/div/div[4]/div[2]/div/div[2]/div/div[2]/div",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "glassnode_handler"
+        },
+        {
+            "name": "比特币鱼到鲨鱼净持仓变化",
+            "url": "https://studio.glassnode.com/workbench/ff5cbadf-de60-42ed-5236-afc0c4ff5057?s=1704038400&u=1730191780&zoom=ytd",
+            "element": "//*[@id=\"root\"]/div/div[4]/div[2]/div/div[2]/div/div[2]/div",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "glassnode_handler"
+        },
+        {
+            "name": "比特币巨鲸持仓变化",
+            "url": "https://studio.glassnode.com/workbench/13ac1974-3d9f-4d5d-6f43-dc85221f0f98?s=1704038400&u=1730191780&zoom=ytd",
+            "element": "//*[@id=\"root\"]/div/div[4]/div[2]/div/div[2]/div/div[2]/div",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "glassnode_handler"
+        },
+        {
+            "name": "比特币交易所存款和取款量",
+            "url": "https://studio.glassnode.com/workbench/e29324ea-8b30-4ce9-5f1f-3e60aa1b733d?s=1704038400&u=1730191780&zoom=ytd",
+            "element": "//*[@id=\"root\"]/div/div[4]/div[2]/div/div[2]/div/div[2]/div",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "glassnode_handler"
+        },
+        {
+            "name": "MVRV-CCD",
+            "url": "https://studio.glassnode.com/workbench/863aec42-33a7-4ae2-6e3a-a3107b8281a0",
+            "element": "//*[@id=\"root\"]/div/div[4]/div[2]/div/div[2]/div/div[2]/div",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "glassnode_handler"
+        },
+        {
+            "name": "Binance-K线",
+            "url": "https://www.coinglass.com/tv/zh/Binance_BTCUSDT",
+            "element": "/html/body/div[2]/div[3]/div/div[1]/div[2]/table",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "binance_k_line_handler"
+        },
+        {
+            "name": "期权",
+            "url": "https://www.coinglass.com/zh/options",
+            "element": "//*[@id=\"__next\"]/div[2]/div[2]/div[2]/div/div/div[6]/div",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "option_handler"
+        },
+        {
+            "name": "期权最大痛点",
+            "url": "https://www.coinglass.com/zh/pro/options/max-pain",
+            "element": "//*[@id=\"__next\"]/div/div/div[2]/div[2]/div[3]",
+            "screenshot_path": null,
+            "output_path": null,
+            "custom_handler": "option_max_pain_handler"
+        }
+
+    ]
+}
