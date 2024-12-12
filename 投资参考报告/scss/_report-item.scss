@@ -1,0 +1,28 @@
+section.report-section {
+  border-bottom: 1px solid $gray-300;
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+  .report-item {
+    .report-content {}
+    .report-date {
+      min-width: none;
+    }
+  }
+}
+@media (min-width: 768px) {
+  section.report-section {
+    min-height: 100vh;
+    .report-item {
+      .report-content {}
+      .report-date {
+        min-width: 18rem;
+      }
+    }
+  }
+}
+@media (min-width: 992px) {
+  section.report-section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}

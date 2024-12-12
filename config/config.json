@@ -30,7 +30,7 @@
             "element": "//*[@id=\"__next\"]/main/div[2]/div[2]",
             "screenshot_path": null,
             "output_path": null,
-            "custom_handler": null
+            "custom_handler": "stablecoin_handler"
         },
         {
             "name": "资金流",

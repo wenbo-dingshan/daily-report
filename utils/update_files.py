@@ -1,4 +1,5 @@
-import datetime
+from utils.get_data import *
+from datetime import datetime
 import re
 import markdown
 
@@ -140,3 +141,104 @@ def update_date_in_markdown(md_path):
 
     except Exception as e:
         print(f"更新失败: {e}")
+
+def load_stablecoin_data(filename="./data/stablecoin_data.json"):
+    if not os.path.exists(filename):
+        return []
+
+    with open(filename, "r") as file:
+        return json.load(file)
+
+def replace_fear_and_greed_in_markdown(markdown_content, today_data, yesterday_data):
+    today_value = today_data["value"]
+    yesterday_value = yesterday_data["value"]
+    today_classification = today_data["classification"]
+    yesterday_classification = yesterday_data["classification"]
+
+    # 构造新的恐慌与贪婪指数文本
+    new_text = (f"今日恐慌与贪婪指数为 {today_value}（昨日为 {yesterday_value}，{yesterday_classification}），"
+                f"当前市场{today_classification}。")
+
+    # 使用正则表达式替换原有的恐慌与贪婪指数文本
+    new_markdown = re.sub(
+        r"恐慌与贪婪指数：今日恐慌与贪婪指数为 \d+（昨日为 \d+，[\u4e00-\u9fa5]+），当前市场[\u4e00-\u9fa5]+。",
+        f"恐慌与贪婪指数：{new_text}",
+        markdown_content
+    )
+
+    return new_markdown
+
+def replace_stablecoin_data_in_markdown(markdown_content, today_data, yesterday_data):
+    today_value = today_data["value"]
+    yesterday_value = yesterday_data["value"]
+
+    today_value_numeric = float(today_value.strip('$').replace('b', '')) * 10  # 将b转换为10亿
+    yesterday_value_numeric = float(yesterday_value.strip('$').replace('b', '')) * 10  # 将b转换为10亿
+    change = round((today_value_numeric - yesterday_value_numeric), 1)  # 以亿为单位
+    new_markdown = markdown_content
+
+    new_markdown = re.sub(r"目前稳定币总体存量为 [\d,\.]+ 亿美元",
+                          f"目前稳定币总体存量为 {today_value_numeric:.2f} 亿美元", new_markdown)
+
+    new_markdown = re.sub(r"目前总体存量为 \*\*[\d,\.]+(\*\*)? 亿美元",
+                          f"目前总体存量为 **{today_value_numeric:.2f}** 亿美元", new_markdown)
+
+    if change < 0:
+        new_markdown = re.sub(r"较昨日(增加|减少|持平) [\d,\.]+ 亿美元", f"较昨日减少 {abs(change)} 亿美元", new_markdown)
+    elif change > 0:
+        new_markdown = re.sub(r"较昨日(增加|减少|持平) [\d,\.]+ 亿美元", f"较昨日增加 {change} 亿美元", new_markdown)
+    else:
+        new_markdown = re.sub(r"较昨日(增加|减少|持平) [\d,\.]+ 亿美元", f"较昨日持平 {change} 亿美元", new_markdown)
+
+    new_markdown = re.sub(r"，，", "，", new_markdown)
+
+    return new_markdown
+
+def save_updated_markdown(updated_content, filename="投资参考报告.md"):
+    with open(filename, "w", encoding="utf-8") as file:
+        file.write(updated_content)
+
+def load_markdown_file(filename):
+    with open(filename, "r", encoding="utf-8") as file:
+        return file.read()
+
+def update_markdown_with_stablecoin_data(markdown_filename, data_filename="./data/stablecoin_data.json"):
+    # 加载稳定币数据
+    stablecoin_data = load_stablecoin_data(data_filename)
+
+    if len(stablecoin_data) < 2:
+        print("Error: Insufficient data (need at least two days of data).")
+        return
+
+    today_data = stablecoin_data[0]
+    yesterday_data = stablecoin_data[1]
+
+    # 读取原始的 Markdown 文件
+    markdown_content = load_markdown_file(markdown_filename)
+
+    # 替换 Markdown 内容
+    updated_markdown = replace_stablecoin_data_in_markdown(markdown_content, today_data, yesterday_data)
+
+    # 保存修改后的 Markdown 文件
+    save_updated_markdown(updated_markdown, markdown_filename)
+
+def update_fear_and_greed_markdown(markdown_file, data_filename="./data/fear_and_greed.json"):
+    # 加载 Markdown 内容
+    with open(markdown_file, "r", encoding="utf-8") as file:
+        markdown_content = file.read()
+
+    # 加载 JSON 数据
+    today, yesterday = load_fng_data(data_filename)
+
+    if today is None or yesterday is None:
+        print("恐慌与贪婪指数数据不足，无法更新 Markdown 文件。")
+        return
+
+    # 替换 Markdown 内容
+    updated_content = replace_fear_and_greed_in_markdown(markdown_content, today, yesterday)
+
+    # 保存更新后的内容
+    with open(markdown_file, "w", encoding="utf-8") as file:
+        file.write(updated_content)
+
+    print("Markdown 文件已成功更新。")

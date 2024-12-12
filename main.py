@@ -1,5 +1,4 @@
 import asyncio
-import json
 import schedule
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -45,7 +44,19 @@ def main():
                 print(f"GlassNode 任务执行失败: {e}")
 
         run_spider_task(macro_event_task[0])
+
+        result = fetch_fear_and_greed_index()
+
+        if "error" in result:
+            print(f"Error fetching data: {result['error']}")
+        else:
+            save_fng_data(result)
+
         update_second_table("./投资参考报告_template.md", "./data/本周重要宏观事件.txt")
+        update_date_in_markdown("投资参考报告.md")
+        update_markdown_with_stablecoin_data("投资参考报告.md")
+        update_fear_and_greed_markdown("投资参考报告.md")
+
         md_to_html("./投资参考报告.md", "./投资参考报告.html")
         asyncio.run(send_files())
 
@@ -59,7 +70,7 @@ def main():
 schedule.every().day.at("16:00").do(main)
 
 if __name__ == "__main__":
-    # main()
-    while True:
-        schedule.run_pending()
-        time.sleep(60)
+    main()
+    # while True:
+    #     schedule.run_pending()
+    #     time.sleep(60)

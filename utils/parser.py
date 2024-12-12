@@ -2,7 +2,8 @@ import configparser
 from functools import lru_cache
 import os
 
-@lru_cache(maxsize=1)  # 缓存大小为1，表示缓存最近一次的结果
+
+@lru_cache(maxsize=1)
 def get_login_credentials(config_path="./config/config.ini", section="glass_node_login"):
     config = configparser.ConfigParser()
     try:

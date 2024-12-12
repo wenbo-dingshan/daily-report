@@ -1,0 +1,127 @@
+ #current-date {
+  font-size: 23px; /* 设置字体大小 */
+  color: #000000;  /* 可选：设置字体颜色 */
+}
+
+body {
+  font-family: 'SimSun', serif;
+  padding-top: 54px;
+  color:  #000000; 
+  font-size: 23px; /* 设置全局字体大小 */
+} 
+  /* #343a40 #868e96 */
+@media (min-width: 992px) {
+  body {
+    padding-top: 0;
+    padding-left: 17rem; } }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'SimSun', serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #000000; }
+
+h1 {
+  font-size: 6rem;
+  line-height: 5.5rem; }
+
+h2 {
+  font-size: 3.5rem; }
+
+.subheading {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: 'SimSun', serif;
+  font-size: 1.35rem; }
+
+.list-social-icons a {
+  color: #000000; }
+  .list-social-icons a:hover {
+    color: #BD5D38; }
+  .list-social-icons a .fa-lg {
+    font-size: 1.75rem; }
+
+.list-icons {
+  font-size: 3rem; }
+  .list-icons .list-inline-item i:hover {
+    color: #BD5D38; }
+
+.navbar-nav > .nav-item > .nav-link {
+  font-size: 23px;  /* 设置父类导航项的字体大小 */
+}
+
+/* 子导航项（嵌套的子菜单项） */
+.navbar-nav .nav-item .navbar-nav .nav-item > .nav-link {
+  font-size: 17px;  /* 设置子导航项的字体大小 */
+}
+
+/* 可选：子导航项的悬停效果 */
+.navbar-nav .nav-item .navbar-nav .nav-item > .nav-link:hover {
+  color: #BD5D38;  /* 设置子导航项悬停时的颜色 */
+}
+
+@media (min-width: 992px) {
+  #sideNav {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 17rem;
+    height: 100vh; }
+    #sideNav .navbar-brand {
+      display: flex;
+      margin: auto auto 0;
+      padding: 0.5rem; }
+      #sideNav .navbar-brand .img-profile {
+        max-width: 10rem;
+        max-height: 10rem;
+        border: 0.5rem solid rgba(255, 255, 255, 0.2); }
+    #sideNav .navbar-collapse {
+      display: flex;
+      align-items: flex-start;
+      flex-grow: 0;
+      width: 100%;
+      margin-bottom: auto; }
+      #sideNav .navbar-collapse .navbar-nav {
+        flex-direction: column;
+        width: 100%; }
+        #sideNav .navbar-collapse .navbar-nav .nav-item {
+          display: block; }
+          #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
+            display: block; } }
+
+section.report-section {
+  border-bottom: 1px solid #dee2e6;
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important; }
+  section.report-section .report-item .report-date {
+    min-width: none; }
+
+@media (min-width: 768px) {
+  section.report-section {
+    min-height: 100vh; }
+    section.report-section .report-item .report-date {
+      min-width: 18rem; } }
+
+@media (min-width: 992px) {
+  section.report-section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important; } }
+
+.bg-primary {
+  background-color: #BD5D38 !important; }
+
+.text-primary {
+  color: #BD5D38 !important; }
+
+a {
+  color: #BD5D38; }
+  a:hover, a:focus, a:active {
+    color: #824027; }

@@ -2,7 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
-from handler.glassnode_handler import glassnode_handler
 from utils.screenshot import take_screenshot
 import importlib
 import re
